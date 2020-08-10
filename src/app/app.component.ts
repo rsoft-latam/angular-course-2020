@@ -9,6 +9,8 @@ import { from, fromEvent } from 'rxjs';
 export class AppComponent implements OnInit{
   title = 'curso-angular';
 
+  sw = true;
+
   ngOnInit(){
 
   }

@@ -3,15 +3,13 @@ import {
   Input,
   OnInit,
   DoCheck,
+  OnChanges,
   AfterContentInit,
   AfterContentChecked,
   AfterViewInit,
   AfterViewChecked,
-  ViewChild,
-  ElementRef
+  OnDestroy
 } from "@angular/core";
-
-import { } from '@types/googlemaps';
 
 @Component({
   selector: "person",
@@ -21,18 +19,24 @@ import { } from '@types/googlemaps';
 export class TestComponent
   implements
     OnInit,
+    OnChanges,
     DoCheck,
     AfterContentInit,
     AfterContentChecked,
     AfterViewInit,
-    AfterViewChecked {
-  @Input() name: string = "Ricardo";
-
-  @ViewChild("gmap", { static: false }) gmap: ElementRef;
+    AfterViewChecked,
+    OnDestroy {
+  @Input() name: string;
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log("ON INIT");
+  }
+
+  ngOnChanges() {
+    console.log("ON CHANGES");
+  }
 
   ngDoCheck() {
     console.log("DO CHECK");
@@ -48,15 +52,15 @@ export class TestComponent
 
   ngAfterViewInit() {
     console.log("AfterViewInit");
-
-    let map: google.maps.Map;
-    map = new google.maps.Map(this.gmap.nativeElement, {
-      center: { lat: -34.397, lng: 150.644 },
-      zoom: 8
-    });
   }
 
   ngAfterViewChecked() {
     console.log("AfterViewChecked");
   }
+
+  ngOnDestroy(){
+    console.log("OnDestroy");
+
+  }
+
 }

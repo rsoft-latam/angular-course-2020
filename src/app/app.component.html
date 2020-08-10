@@ -1,2 +1,4 @@
 <p>Ricardo</p>
-<person></person>
+
+<person *ngIf="sw" name="ricardo"></person>
+<button (click)="sw = false;">Change SW</button>
