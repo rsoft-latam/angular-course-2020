@@ -13,9 +13,20 @@ import {
 
 @Component({
   selector: "person",
-  templateUrl: "./test.component.html",
-  styleUrls: ["./test.component.css"]
+  template: `
+    <div style="border: 1px solid red;">
+    <p>TEST</p>
+    <input type="text" [(ngModel)]="name">
+    <p>VALOR VAR NAME: {{name}}</p>
+    </div>
+  `,
+  styles: [
+    `
+    
+    `
+  ]
 })
+
 export class TestComponent
   implements
     OnInit,
