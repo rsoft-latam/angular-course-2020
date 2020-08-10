@@ -11,6 +11,8 @@ export class AppComponent implements OnInit{
 
   sw = true;
 
+  persons = ['marco', 'maria', 'jorge', 'lupe']
+
   ngOnInit(){
 
   }
