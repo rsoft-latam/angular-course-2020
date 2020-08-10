@@ -9,26 +9,8 @@ import { from, fromEvent } from 'rxjs';
 export class AppComponent implements OnInit{
   title = 'curso-angular';
 
-
-
   ngOnInit(){
 
-
-      const array = from([1,2,3,4,5,6]);
-
-      array.subscribe(s => console.log('item:', s))
-
-
-
-      const aux = fromEvent(document, 'mousemove');
-
-      aux.subscribe(s => console.log('event: ', s.clientX + ', ' + s.clientY));
-
-
-
   }
-
-
-
 
 }
