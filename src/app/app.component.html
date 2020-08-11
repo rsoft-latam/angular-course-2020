@@ -5,3 +5,10 @@
 <div *ngFor="let person of persons; let i = index">
   <p>{{person}}========{{i}}</p>
 </div>
+
+
+<div [ngSwitch]="2">
+  <p *ngSwitchCase="3">el valor es 3</p>
+  <p *ngSwitchCase="2">el valor es 2</p>
+  <p *ngSwitchDefault>No es ni 3 ni 2</p>
+</div>
