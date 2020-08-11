@@ -13,6 +13,12 @@ export class AppComponent implements OnInit{
 
   persons = ['marco', 'maria', 'jorge', 'lupe']
 
+
+  aux = 3;
+
+
+  auxColor = 'red';
+
   ngOnInit(){
 
   }
