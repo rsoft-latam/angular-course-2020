@@ -14,7 +14,9 @@ import { PersonaComponent } from './components/persona/persona.component';
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+  ]
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
