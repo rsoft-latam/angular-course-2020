@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PersonaComponent } from './components/persona/persona.component';
-import {TestComponent} from '../../../../components/TestComponent';
+
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
-    PersonaComponent,
-    TestComponent
+    PersonaComponent
   ],
   exports: [
     PersonaComponent
