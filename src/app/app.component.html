@@ -1,23 +1,9 @@
-<p>Ricardo</p>
+<P>PIPES</P>
+
+<p>PIPE JSON:{{persons | json }}</p>
+<p>PIPE UPPERCASE: {{ name | uppercase}}</p>
+<p>PIPE LOWERCASE:{{ 'RICARDO' | lowercase}}</p>
+<p>PIPE DATE {{ '08/08/2020' | date: "MM/dd/yy" }}</p>
 
 
-<div *ngFor="let person of persons">
-  <div [ngStyle]="{'background': person.enable ? 'yellow' : 'red'}">
-    <persona [name]="person.name"
-           [lastName]="person.lastName" 
-           [age]="person.age" 
-           [enable]="person.enable">
-   </persona>
-  </div>
-</div>
-
-
-<app-prod1></app-prod1>
-<app-prod3></app-prod3>
-
-
-
-<app-ad1></app-ad1>
-
-
-<app-us1></app-us1>
+<p>VAR NAME:{{name | test}}</p>
