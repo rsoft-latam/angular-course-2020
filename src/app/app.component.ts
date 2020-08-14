@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit{
   title = 'curso-angular';
 
+  numbers = [1,2,3,4,5,6,7,8,9,10];
 
   name = 'ricardo';
 
@@ -43,7 +44,16 @@ export class AppComponent implements OnInit{
   auxExponent: number = 2;
 
   ngOnInit(){
+    console.log('PURA: ', this.pura(6, 2));
+    console.log('IMPURA: ', this.impura(6, 2));
+  }
 
+  pura(a:number, b:number){
+    return a + b;
+  }
+
+  impura(a:number, b:number){
+    return a + b + Math.random();
   }
 
 }
