@@ -9,12 +9,14 @@ import { ProductoModule } from './modules/producto/producto.module';
 import { AdminModule } from './modules/admin/admin.module';
 import { UserModule } from './modules/user/user.module';
 import { TestPipe } from './pipes/test.pipe';
+import { ExpoPipe } from './pipes/expo.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestPipe
+    TestPipe,
+    ExpoPipe
   ],
   imports: [
     BrowserModule,
