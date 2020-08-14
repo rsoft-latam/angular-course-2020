@@ -6,8 +6,14 @@
 <p>PIPE DATE {{ '08/08/2020' | date: "MM/dd/yy" }}</p>
 
 
+
+
+
 <p>VAR NAME:{{name | test}}</p>
 
 
 
-<p>{{ 4 | expo: 2  }}</p>
+
+VALUE: <input type="text" [(ngModel)]="auxNumber">
+EXPONENT: <input type="text" [(ngModel)]="auxExponent" >
+<p>{{ auxNumber | expo: auxExponent : 'Hola'  }}</p>
