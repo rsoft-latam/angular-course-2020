@@ -7,11 +7,53 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class AppComponent implements OnInit{
+
+name = 'ricardo';
+
+aaaa(event){
+console.log('EVENTO DIERCGIVE:', event)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  lastName = 'pari';
+
+
+
+
+
+
+
+
+
   title = 'curso-angular';
 
   numbers = [1,2,3,4,5,6,7,8,9,10];
 
   name = 'ricardo';
+  lastName = 'pari';
 
   persons = [
     {

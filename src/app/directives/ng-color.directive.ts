@@ -16,6 +16,9 @@ export class NgColorDirective {
   @HostListener('mouseleave') onMousdeLeave(){
     console.log('MOUSE LEAVE')
     this.changeColor(this.secondColor);
+
+    this.el.nativeElement.contains()
+
   }
 
   constructor(private el: ElementRef) { 

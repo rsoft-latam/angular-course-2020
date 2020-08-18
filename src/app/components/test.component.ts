@@ -2,71 +2,53 @@ import {
   Component,
   Input,
   OnInit,
-  DoCheck,
   OnChanges,
-  AfterContentInit,
-  AfterContentChecked,
-  AfterViewInit,
-  AfterViewChecked,
-  OnDestroy
+  OnDestroy,
+SimpleChange
 } from "@angular/core";
 
 @Component({
   selector: "person",
   template: `
     <div style="border: 1px solid red;">
-    <p>TEST</p>
-    <input type="text" [(ngModel)]="name">
-    <p>VALOR VAR NAME: {{name}}</p>
+    <p>NAME: {{name}}</p>
+     <p>NAME: {{lastName}}</p>
     </div>
-  `,
-  styles: [
-    `
-    
-    `
-  ]
+  `
 })
 
 export class TestComponent
   implements
     OnInit,
     OnChanges,
-    DoCheck,
-    AfterContentInit,
-    AfterContentChecked,
-    AfterViewInit,
-    AfterViewChecked,
     OnDestroy {
-  @Input() name: string;
 
+//@Input() name:string;
+
+intermedearia:string;
+@Input()
+  get name(){
+   return this.intermedearia;
+  }
+  set name(name:string){
+    this.intermedearia = 'AAAAAAAAAAAAAAAAAAAAAAA ' + name;
+  }
+
+@Input() lastName:string;
   constructor() {}
 
   ngOnInit() {
-    console.log("ON INIT");
+    console.log("ON INIT", this.name);
   }
 
-  ngOnChanges() {
-    console.log("ON CHANGES");
-  }
+  ngOnChanges(changes: SimpleChange) {
+    
+    if(changes && changes.lastName && changes.lastName.currentValue){
+      console.log("ON CHANGES", changes.lastName.currentValue);
+      const aux = 'AAAAAAAAAAAAAAAAAAAAAAA ' + changes.lastName.currentValue;
+      this.lastName = aux;
+    }
 
-  ngDoCheck() {
-    console.log("DO CHECK");
-  }
-
-  ngAfterContentInit() {
-    console.log("AfterContentInit");
-  }
-
-  ngAfterContentChecked() {
-    console.log("AfterContentChecked");
-  }
-
-  ngAfterViewInit() {
-    console.log("AfterViewInit");
-  }
-
-  ngAfterViewChecked() {
-    console.log("AfterViewChecked");
   }
 
   ngOnDestroy(){
@@ -75,3 +57,4 @@ export class TestComponent
   }
 
 }
+
