@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { AdminComponent } from './components/admin/admin.component';
-import {AppRouting} from './app.routing';
+import {AppRoutingModule} from './app-routing.module';
 
 
 @NgModule({
@@ -19,7 +19,7 @@ import {AppRouting} from './app.routing';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRouting
+    AppRoutingModule
   ],
   providers: [
   ],
