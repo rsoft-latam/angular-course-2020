@@ -3,16 +3,6 @@
 
 <button routerLink="/pages">LOGIN</button>
 
-
-
-
-<div #test   class="class1 class2" id="test2">HOLA</div>
-
-
 <button (click)="sw = !sw;">SW</button>
-<div *ngIf="sw else esFalso">es verdad</div>
-
-
-<ng-template #esFalso>
-  <p>ES FALSO</p>
-</ng-template>
+<p>{{sw}}</p>
+<p *ngElse="sw">SE MUESTRA SI ES FALSO</p>
