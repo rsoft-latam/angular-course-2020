@@ -14,4 +14,5 @@ export class ProductService {
     return this.http.get('https://angular-course-bcdc9.firebaseio.com/products.json');
   }
 
+
 }
