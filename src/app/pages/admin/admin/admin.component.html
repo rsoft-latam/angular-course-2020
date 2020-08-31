@@ -1,1 +1,18 @@
 <p>admin works!</p>
+
+
+<!--EXAMPLE 1-->
+<!--<input type="text" [formControl]="nameControl">
+<button (click)="onEnviar()">Enviar</button>-->
+
+<!--EXAMPLE 1-->
+<form [formGroup]="productForm" style="display: flex; flex-direction: column;">
+  <input formControlName="description" type="text">
+  <input formControlName="imageUrl" type="text">
+  <input formControlName="ownerId" type="text">
+  <input formControlName="price" type="text">
+  <input formControlName="title" type="text">
+</form>
+<button (click)="onEnviar2()">Enviar</button>
+
+
