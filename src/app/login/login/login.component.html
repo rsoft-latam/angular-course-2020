@@ -17,14 +17,34 @@
 <button (click)="onLogin2(form)">LOGIN 2</button>-->
 
 <!--EXAMPLE 3-->
-<div style="display: flex; flex-direction: column;">
+<!--<div style="display: flex; flex-direction: column;">
   <form (ngSubmit)="onLogin2(form)" #form="ngForm">
     <input type="text" name="username" ngModel>
     <input type="password" name="password" ngModel>
     <button type="submit">ENVIAR</button>
   </form>
-</div>
+</div>-->
 
+
+<input class="form-control"
+       type="text"
+       required
+       minlength="3"
+       maxlength="5"
+       ngModel
+       #name="ngModel">
+<div *ngIf="name.invalid && (name.touched || name.dirty)"
+     class="alert alert-danger">
+  <div *ngIf="name.errors.required">
+    Name is required
+  </div>
+  <div *ngIf="name.errors.minlength">
+    Name must have 3 characteres min
+  </div>
+  <div *ngIf="name.errors.maxlength">
+    Name must have 5 characteres max
+  </div>
+</div>
 
 
 
@@ -34,6 +54,6 @@
 <!--<button routerLink="/pages">LOGIN</button>-->
 <!--<button (click)="onLogin()">LOGIN</button>-->
 
-<button (click)="sw = !sw;">SW</button>
+<!--<button (click)="sw = !sw;">SW</button>
 <p>{{sw}}</p>
-<p *ngElse="sw">SE MUESTRA SI ES FALSO</p>
+<p *ngElse="sw">SE MUESTRA SI ES FALSO</p>-->
