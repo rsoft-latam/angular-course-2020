@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {ProductService} from '../../../services/product.service';
 
 @Component({
   selector: 'app-admin',
@@ -12,13 +13,14 @@ export class AdminComponent implements OnInit {
 
   // nameControl = new FormControl();
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              private productService: ProductService) {
   }
 
   ngOnInit(): void {
 
     this.productForm = this.formBuilder.group({
-      description: ['description', [ Validators.required, Validators.minLength(3) ]],
+      description: ['description', [Validators.required, Validators.minLength(3)]],
       imageUrl: '',
       ownerId: '',
       price: '',
@@ -33,6 +35,11 @@ export class AdminComponent implements OnInit {
 
   onEnviar2(): void {
     console.log('FORM GROUP: ', this.productForm.value);
+
+    this.productService.addProduct(this.productForm.value).subscribe(res => {
+      console.log('RESP: ', res);
+    });
+
   }
 
 }
