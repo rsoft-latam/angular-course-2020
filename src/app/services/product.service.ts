@@ -21,4 +21,8 @@ export class ProductService {
     return this.http.delete(`https://angular-course-bcdc9.firebaseio.com/products/${id}.json`);
   }
 
+  public updateProduct(id: any, product: any): Observable<any> {
+    return this.http.put(`https://angular-course-bcdc9.firebaseio.com/products/${id}.json`, product);
+  }
+
 }

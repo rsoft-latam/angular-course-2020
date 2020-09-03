@@ -2,8 +2,13 @@
 
   <mat-drawer #drawer style="width: 300px; height: 100%;" mode="side" [position]="'end'">
 
-    <form [formGroup]="productForm" style="display: flex; flex-direction: column;">
-      <input formControlName="description" type="text">
+    <form [formGroup]="productForm" style="display: flex; flex-direction: column; padding: 20px;">
+
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="description" type="text">
+      </mat-form-field>
+
       <div *ngIf="productForm.get('description').invalid &&
               (productForm.get('description').touched ||
               productForm.get('description').dirty)"
@@ -16,12 +21,26 @@
         </div>
       </div>
 
-      <input formControlName="imageUrl" type="text">
-      <input formControlName="ownerId" type="text">
-      <input formControlName="price" type="text">
-      <input formControlName="title" type="text">
+      <mat-form-field>
+        <mat-label>Image Url</mat-label>
+        <input matInput formControlName="imageUrl" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Owner Id</mat-label>
+        <input matInput formControlName="ownerId" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Price</mat-label>
+        <input matInput formControlName="price" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title" type="text">
+      </mat-form-field>
+
     </form>
-    <button (click)="onEnviar2()">Enviar</button>
+    <button (click)="onEnviar2()">Create</button>
+    <button (click)="onUpdateProduct()">Update</button>
 
   </mat-drawer>
 
@@ -49,7 +68,7 @@
           </p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button>Edit</button>
+          <button mat-button (click)="onEdit(product); drawer.toggle()">Edit</button>
           <button mat-button (click)="onDelete(product.id)">Delete</button>
         </mat-card-actions>
       </mat-card>
