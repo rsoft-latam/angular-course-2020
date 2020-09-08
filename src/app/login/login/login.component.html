@@ -1,59 +1,44 @@
-<p>login works!</p>
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>LOGIN</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form #form="ngForm" style="display: flex; flex-direction: column;">
 
-<!--EXAMPLE 1-->
-<!--<div style="display: flex; flex-direction: column;">
-   <input type="text" [(ngModel)]="username">
-   <input type="password" [(ngModel)]="password">
-</div>-->
+      <mat-form-field>
+        <mat-label>E-mail</mat-label>
+        <input matInput
+               type="text"
+               name="email"
+               ngModel
+               #emailUI="ngModel"
+               required>
+        <div *ngIf="emailUI.invalid && (emailUI.touched || emailUI.dirty)"
+             class="alert alert-danger">
+          <div *ngIf="emailUI.errors.required">
+            Name is required
+          </div>
+        </div>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput
+               type="text"
+               name="password"
+               ngModel
+               #passwordUI="ngModel"
+               required>
+        <div *ngIf="passwordUI.invalid && (passwordUI.touched || passwordUI.dirty)"
+             class="alert alert-danger">
+          <div *ngIf="passwordUI.errors.required">
+            Name is required
+          </div>
+        </div>
+      </mat-form-field>
 
-<!--EXAMPLE 2-->
-<!--<div style="display: flex; flex-direction: column;">
-  <form #form="ngForm">
-    <input type="text" name="username" ngModel>
-    <input type="password" name="password" ngModel>
-    <button type="submit">ENVIAR</button>
-  </form>
-</div>
-<button (click)="onLogin2(form)">LOGIN 2</button>-->
-
-<!--EXAMPLE 3-->
-<!--<div style="display: flex; flex-direction: column;">
-  <form (ngSubmit)="onLogin2(form)" #form="ngForm">
-    <input type="text" name="username" ngModel>
-    <input type="password" name="password" ngModel>
-    <button type="submit">ENVIAR</button>
-  </form>
-</div>-->
-
-
-<input class="form-control"
-       type="text"
-       required
-       minlength="3"
-       maxlength="5"
-       ngModel
-       #name="ngModel">
-<div *ngIf="name.invalid && (name.touched || name.dirty)"
-     class="alert alert-danger">
-  <div *ngIf="name.errors.required">
-    Name is required
-  </div>
-  <div *ngIf="name.errors.minlength">
-    Name must have 3 characteres min
-  </div>
-  <div *ngIf="name.errors.maxlength">
-    Name must have 5 characteres max
-  </div>
-</div>
-
-
-
-
-
-
-<!--<button routerLink="/pages">LOGIN</button>-->
-<!--<button (click)="onLogin()">LOGIN</button>-->
-
-<!--<button (click)="sw = !sw;">SW</button>
-<p>{{sw}}</p>
-<p *ngElse="sw">SE MUESTRA SI ES FALSO</p>-->
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button [disabled]="form.invalid" (click)="onLogin(form)">Login</button>
+  </mat-card-actions>
+</mat-card>
