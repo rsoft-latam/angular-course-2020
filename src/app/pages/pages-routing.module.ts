@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {PagesComponent} from './pages/pages.component';
+import {PagesComponent} from './pages.component';
 
 const routes: Routes = [
   {
@@ -19,5 +19,6 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
+
 export class PagesRoutingModule {
 }

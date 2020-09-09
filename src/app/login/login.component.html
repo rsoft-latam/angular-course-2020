@@ -23,7 +23,7 @@
       <mat-form-field>
         <mat-label>Password</mat-label>
         <input matInput
-               type="text"
+               type="password"
                name="password"
                ngModel
                #passwordUI="ngModel"
@@ -42,3 +42,4 @@
     <button mat-button [disabled]="form.invalid" (click)="onLogin(form)">Login</button>
   </mat-card-actions>
 </mat-card>
+

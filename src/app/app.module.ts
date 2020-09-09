@@ -1,13 +1,14 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
-import {AppRoutingModule} from './app-routing.module';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {RouterModule, Routes} from '@angular/router';
 
-import {MatSliderModule} from '@angular/material/slider';
-import {MatIconModule} from '@angular/material/icon';
+const routes: Routes = [
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule)},
+  {path: 'pages', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)}
+];
 
 @NgModule({
   declarations: [
@@ -16,13 +17,10 @@ import {MatIconModule} from '@angular/material/icon';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    FormsModule,
-    AppRoutingModule,
-
-    MatSliderModule,
-    MatIconModule
+    RouterModule.forRoot(routes)
   ],
   bootstrap: [AppComponent]
 })
 
-export class AppModule { }
+export class AppModule {
+}

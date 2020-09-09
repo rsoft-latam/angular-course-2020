@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { PagesRoutingModule } from './pages-routing.module';
-import { PagesComponent } from './pages/pages.component';
+import {PagesRoutingModule} from './pages-routing.module';
+import {PagesComponent} from './pages.component';
 
 
 @NgModule({
@@ -14,4 +14,5 @@ import { PagesComponent } from './pages/pages.component';
     PagesRoutingModule
   ]
 })
-export class PagesModule { }
+export class PagesModule {
+}
