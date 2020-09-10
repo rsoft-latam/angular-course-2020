@@ -9,7 +9,6 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {AuthService} from '../shared/services/auth.service';
-import {HttpClientModule} from '@angular/common/http';
 import {RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
@@ -29,7 +28,6 @@ const routes: Routes = [
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    HttpClientModule,
     RouterModule.forChild(routes)
   ],
   providers: [
