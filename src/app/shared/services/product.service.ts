@@ -15,6 +15,10 @@ export class ProductService {
     return this.http.get(`${this.url}/products.json`);
   }
 
+  public getProductsById(id: any): Observable<any> {
+    return this.http.get(`${this.url}/products.json?orderBy="ownerId"&equalTo="${id}"&print=pretty`);
+  }
+
   public addProduct(product: any): Observable<any> {
     return this.http.post(`${this.url}/products.json`, product);
   }
