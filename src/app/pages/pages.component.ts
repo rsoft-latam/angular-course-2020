@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from '../shared/services/auth.service';
 
 @Component({
   templateUrl: './pages.component.html'
@@ -6,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 
 export class PagesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService) {
+  }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
+  }
+
+  public onLogout(): void {
+    this.authService.logout();
   }
 
 }
