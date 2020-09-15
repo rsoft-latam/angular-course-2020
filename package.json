@@ -33,7 +33,10 @@
     "@ng-bootstrap/ng-bootstrap": "^7.0.0",
 
     "@angular/material": "^10.0.0",
-    "@angular/cdk": "^10.0.0"
+    "@angular/cdk": "^10.0.0",
+
+    "@ngrx/store": "^10.0.0",
+    "@ngrx/effects": "^10.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1000.5",
@@ -53,6 +56,11 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~3.9.5"
+    "typescript": "~3.9.5",
+
+    "@ngrx/store-devtools": "^10.0.0",
+
+    "ngrx-store-logger": "^0.2.4",
+    "ngrx-store-freeze": "^0.2.4"
   }
 }
