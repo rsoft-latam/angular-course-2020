@@ -1,5 +1,7 @@
 import {ActionReducerMap} from '@ngrx/store';
 
-export const reducers: ActionReducerMap<any> = {
+import * as fromHome from '../pages/home/store/home.reducer';
 
+export const reducers: ActionReducerMap<any> = {
+  home: fromHome.reducer
 };
