@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {ProductService} from '../../shared/services/product.service';
+import {ProductService} from '../shared/services/product.service';
 import {Subscription} from 'rxjs';
-import {AuthService} from '../../shared/services/auth.service';
+import {AuthService} from '../shared/services/auth.service';
 
 @Component({
   templateUrl: './admin.component.html',
