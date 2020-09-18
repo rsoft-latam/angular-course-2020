@@ -1,113 +1,90 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {ProductService} from '../shared/services/product.service';
+import {PetService} from '../shared/services/pet.service';
 import {Subscription} from 'rxjs';
 import {AuthService} from '../shared/services/auth.service';
+import {Store} from '@ngrx/store';
+import {GetReport} from './store/admin.actions';
 
 @Component({
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss']
+  templateUrl: './admin.component.html'
 })
 export class AdminComponent implements OnInit, OnDestroy {
 
-  products = [];
+  addMode = true;
 
-  productForm: FormGroup;
+  vacinnatedPets = [];
+  notVacinnatedPets = [];
 
-  productSubs: Subscription;
-  productGetSubs: Subscription;
-  productDeleteSubs: Subscription;
-  productUpdateSubs: Subscription;
+  formValues: any = {
+    name: '',
+    urlImage: '',
+    color: '',
+    age: '',
+    vaccinated: ''
+  };
+
+  petSubs: Subscription;
+  petGetSubs: Subscription;
+  petDeleteSubs: Subscription;
+  petUpdateSubs: Subscription;
   idEdit: any;
 
-  // nameControl = new FormControl();
-
-  constructor(private formBuilder: FormBuilder,
+  constructor(private store: Store<any>,
               private authService: AuthService,
-              private productService: ProductService) {
+              private petService: PetService) {
   }
 
   ngOnInit(): void {
-
-    this.loadProduct();
-
-    this.productForm = this.formBuilder.group({
-      description: ['description', [Validators.required, Validators.minLength(3)]],
-      imageUrl: '',
-      ownerId: '',
-      price: '',
-      title: ''
-    });
-
+    this.loadPets();
   }
 
-  loadProduct(): void {
-    this.products = [];
-    const userId = this.authService.getUserId();
-    this.productGetSubs = this.productService.getProductsById(userId).subscribe(res => {
-      Object.entries(res).map((p: any) => this.products.push({id: p[0], ...p[1]}));
+  loadPets(): void {
+    this.vacinnatedPets = [];
+    this.notVacinnatedPets = [];
+
+    this.petGetSubs = this.petService.getPets().subscribe(res => {
+      Object.entries(res).map((p: any) => {
+
+        if (p[1].vaccinated) {
+          this.vacinnatedPets.push({id: p[0], ...p[1]});
+        } else {
+          this.notVacinnatedPets.push({id: p[0], ...p[1]});
+        }
+
+      });
     });
   }
 
   onDelete(id: any): void {
-    this.productDeleteSubs = this.productService.deleteProduct(id).subscribe(
-      res => {
-        console.log('RESPONSE: ', res);
-        this.loadProduct();
-      },
-      err => {
-        console.log('ERROR: ');
-      }
-    );
+    this.petDeleteSubs = this.petService.deletePet(id).subscribe(() => this.loadPets());
   }
 
   onEdit(product): void {
     this.idEdit = product.id;
-    this.productForm.patchValue(product);
-  }
-
-  onUpdateProduct(): void {
-    this.productUpdateSubs = this.productService.updateProduct(
-      this.idEdit,
-      {
-        ...this.productForm.value,
-        ownerId: this.authService.getUserId()
-      }
-    ).subscribe(
-      res => {
-        console.log('RESP UPDATE: ', res);
-        this.loadProduct();
-      },
-      err => {
-        console.log('ERROR UPDATE DE SERVIDOR');
-      }
-    );
-  }
-
-  /*onEnviar() {
-    console.log('VALOR: ', this.nameConatrol.value);
-  }*/
-
-  onEnviar2(): void {
-    this.productSubs = this.productService.addProduct({
-      ...this.productForm.value,
-      ownerId: this.authService.getUserId()
-    }).subscribe(
-      res => {
-        console.log('RESP: ', res);
-      },
-      err => {
-        console.log('ERROR DE SERVIDOR');
-      }
-    );
-
+    this.formValues = product;
   }
 
   ngOnDestroy(): void {
-    this.productSubs ? this.productSubs.unsubscribe() : '';
-    this.productGetSubs ? this.productGetSubs.unsubscribe() : '';
-    this.productDeleteSubs ? this.productDeleteSubs.unsubscribe() : '';
-    this.productUpdateSubs ? this.productUpdateSubs.unsubscribe() : '';
+    this.petSubs ? this.petSubs.unsubscribe() : '';
+    this.petGetSubs ? this.petGetSubs.unsubscribe() : '';
+    this.petDeleteSubs ? this.petDeleteSubs.unsubscribe() : '';
+    this.petUpdateSubs ? this.petUpdateSubs.unsubscribe() : '';
+  }
+
+
+  onSave(data): void {
+    if (this.addMode) {
+      this.petSubs = this.petService.addPet(data).subscribe(() => this.loadPets());
+    } else {
+      this.petUpdateSubs = this.petService.updatePet(this.idEdit, data).subscribe(() => this.loadPets());
+    }
+  }
+
+  onReport(): void {
+    this.store.dispatch(GetReport({
+      vaccinated: this.vacinnatedPets.length,
+      notVaccinated: this.notVacinnatedPets.length
+    }));
   }
 
 }

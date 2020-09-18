@@ -23,13 +23,13 @@ export class LoginComponent implements OnInit {
     console.log('FORM: ', form.value);
 
     this.authService.login({
-      email: form.value.email,
-      password: form.value.password,
+      email: 'angular@angular.com',
+      password: '123456',
       returnSecureToken: true
     }).subscribe(
       res => {
         console.log('LOGIN RESPONSE: ', res);
-        this.router.navigate(['pages']);
+        this.router.navigate(['admin']);
       },
       err => {
         console.log('LOGIN ERROR: ');
