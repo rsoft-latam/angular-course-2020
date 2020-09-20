@@ -1,12 +1,11 @@
-<mat-drawer-container autosize [hasBackdrop]="false" style="position:relative; width: 100%; height: 100%;">
+<mat-drawer-container [hasBackdrop]="false" class="admin">
 
-  <mat-drawer style="width: 600px; height: 100%;"
+  <mat-drawer class="sidenav"
               [mode]="'over'"
               [position]="'end'"
               [opened]="openSidenav$ | async">
 
-    <div
-      style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; padding: 20px;">
+    <div class="header">
       <div>
         <div style="font-weight: bold;">{{createActive ? 'CREATE PRODUCT' : 'UPDATE PRODUCT'}}</div>
       </div>

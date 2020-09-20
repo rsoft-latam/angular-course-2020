@@ -8,7 +8,14 @@ import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styles: [`
+    :host {
+      display: flex;
+      overflow-y: auto;
+      height: 100%;
+      width: 100%;
+    }
+  `]
 })
 
 export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {

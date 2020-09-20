@@ -6,7 +6,14 @@ import {AuthService} from '../../shared/services/auth.service';
 
 @Component({
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss']
+  styles: [`
+    :host {
+      display: flex;
+      overflow-y: auto;
+      height: 100%;
+      width: 100%;
+    }
+  `]
 })
 
 export class AdminComponent implements OnInit, OnDestroy {

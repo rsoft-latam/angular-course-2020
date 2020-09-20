@@ -1,14 +1,12 @@
-<mat-card
-  style="display: flex; flex-direction: column; width: 400px; height: 400px; background-color: #f39c12; padding: 50px;">
-  <mat-card-header style="display: flex; justify-content: center; height: 100px;">
-    <div style="position: relative;top: -120px;border-radius: 50%;">
-      <img src="assets/images/logo.png" alt="Logo"
-           style="height: 200px;width: 200px; border-radius: 50%; border: 2px solid #fff;">
+<mat-card class="login">
+  <mat-card-header>
+    <div class="img-container">
+      <img src="assets/images/logo.png" alt="Logo">
     </div>
   </mat-card-header>
 
-  <mat-card-content style="height: 100%;">
-    <form #form="ngForm" style="display: flex; flex-direction: column;">
+  <mat-card-content>
+    <form #form="ngForm">
       <mat-form-field>
         <mat-label>E-mail</mat-label>
         <input matInput
