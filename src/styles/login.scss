@@ -1,0 +1,75 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  background-color: #f39c12;
+  padding: 50px !important;
+  margin: 20px;
+
+  mat-card-header {
+    display: flex;
+    justify-content: center;
+    height: 100px;
+
+    .img-container {
+      position: relative;
+      top: -120px;
+      border-radius: 50%;
+
+      img {
+        height: 200px;
+        width: 200px;
+        border-radius: 50%;
+        border: 2px solid #fff;
+      }
+
+    }
+
+    .mat-card-header-text {
+      margin: 0;
+    }
+  }
+
+  mat-card-content {
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {
+  .login {
+    width: 100%;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .login {
+    width: 100%;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .login {
+    width: 400px;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .login {
+    width: 400px;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .login {
+    width: 400px;
+  }
+}

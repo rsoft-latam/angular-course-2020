@@ -1,0 +1,47 @@
+<mat-card class="login">
+  <mat-card-header>
+    <div class="img-container">
+      <img src="assets/images/logo.png" alt="Logo">
+    </div>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form #form="ngForm">
+      <mat-form-field>
+        <mat-label>E-mail</mat-label>
+        <input matInput
+               type="text"
+               name="email"
+               [ngModel]="email"
+               #emailUI="ngModel"
+               required>
+      </mat-form-field>
+      <div *ngIf="emailUI.invalid && (emailUI.touched || emailUI.dirty)"
+           class="alert alert-danger">
+        <div *ngIf="emailUI.errors.required">Email is required</div>
+      </div>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput
+               type="password"
+               name="password"
+               [ngModel]="password"
+               #passwordUI="ngModel"
+               required>
+      </mat-form-field>
+      <div *ngIf="passwordUI.invalid && (passwordUI.touched || passwordUI.dirty)"
+           class="alert alert-danger">
+        <div *ngIf="passwordUI.errors.required">Password is required</div>
+      </div>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions style="height: 200px;">
+    <button mat-button
+            [disabled]="form.invalid"
+            (click)="onLogin(form)"
+            style="background-color: #ed2f42; color: white; width: 100%;">
+      LOGIN
+    </button>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,102 @@
+<mat-drawer-container [hasBackdrop]="false" class="admin">
+
+  <mat-drawer class="sidenav"
+              [mode]="'over'"
+              [position]="'end'"
+              [opened]="openSidenav$ | async">
+
+    <div class="header">
+      <div>
+        <div style="font-weight: bold;">{{createActive ? 'CREATE PRODUCT' : 'UPDATE PRODUCT'}}</div>
+      </div>
+      <div>
+        <button type="button" mat-icon-button (click)="closeSidenav()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <form [formGroup]="productForm" autocomplete="off" style="display: flex; flex-direction: column; padding: 20px;">
+
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title" type="text" required>
+      </mat-form-field>
+
+      <div *ngIf="productForm.get('title').invalid &&
+              (productForm.get('title').touched ||
+              productForm.get('title').dirty)"
+           class="alert alert-danger">
+        <div *ngIf="productForm.get('title').errors.required">Name is required</div>
+      </div>
+
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="description" type="text" required>
+      </mat-form-field>
+
+      <div *ngIf="productForm.get('description').invalid &&
+              (productForm.get('description').touched ||
+              productForm.get('description').dirty)"
+           class="alert alert-danger">
+        <div *ngIf="productForm.get('description').errors.required">Description is required</div>
+        <div *ngIf="productForm.get('description').errors.minlength">Description must have 3 characteres min</div>
+      </div>
+
+      <mat-form-field>
+        <mat-label>Image Url</mat-label>
+        <input matInput formControlName="imageUrl" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Price Bs.</mat-label>
+        <input matInput formControlName="price" type="number">
+      </mat-form-field>
+
+    </form>
+
+    <div style="display: flex; flex-direction: row; padding: 20px;">
+      <button *ngIf="createActive" mat-raised-button color="accent" (click)="onCreate()">Create</button>
+      <button *ngIf="!createActive" mat-raised-button color="accent" (click)="onUpdate()">Update</button>
+    </div>
+
+  </mat-drawer>
+
+  <div style="margin: 20px;">
+    <button mat-mini-fab color="primary" (click)="onAdd()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <div class="row" style="margin: 0; padding: 0;">
+
+    <div *ngFor="let product of products"
+         class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3"
+         style="padding: 50px; display: flex; justify-content: center;">
+
+      <mat-card style="width: 300px; height: 400px; background-color: #bbd27d;">
+        <mat-card-header>
+          <mat-card-title>{{product.title}}</mat-card-title>
+          <mat-card-subtitle>{{product.price}} Bs.</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="product.imageUrl" style="height: 180px;">
+        <mat-card-content>
+          <p>
+            {{product.description}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="accent" (click)="onEdit(product)">Edit</button>
+          <button mat-raised-button color="warn" (click)="onDelete(product.id)">Delete</button>
+        </mat-card-actions>
+      </mat-card>
+
+    </div>
+
+  </div>
+
+</mat-drawer-container>
+
+
+
+
+

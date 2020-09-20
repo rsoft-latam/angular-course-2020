@@ -1,0 +1,77 @@
+<mat-drawer-container [hasBackdrop]="false" class="home">
+
+  <mat-drawer class="sidenav"
+              [mode]="'over'"
+              [position]="'end'"
+              [opened]="sidenavOpen$ | async">
+
+    <div class="header">
+      <div>
+        <div style="font-weight: bold;">CART</div>
+      </div>
+      <div>
+        <button type="button" mat-icon-button (click)="onClose()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+    <table mat-table [dataSource]="dataSource" style="width: 100%;">
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> Title</th>
+        <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+      </ng-container>
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> Price</th>
+        <td mat-cell *matCellDef="let element"> {{element.price}}Bs.</td>
+      </ng-container>
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description</th>
+        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+      </ng-container>
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef> Acciones</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-mini-fab color="warn" (click)="onDelete(element)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+  </mat-drawer>
+
+  <div class="row" style="margin: 0; padding: 0;">
+
+    <div *ngFor="let product of products"
+         class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3"
+         style="padding: 50px; display: flex; justify-content: center;">
+
+      <mat-card style="width: 300px; height: 400px; background-color: #bbd27d;">
+        <mat-card-header>
+          <mat-card-title>{{product.title}}</mat-card-title>
+          <mat-card-subtitle>{{product.price}} Bs.</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="product.imageUrl" style="height: 180px;">
+        <mat-card-content>
+          <p>
+            {{product.description}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="accent" (click)="onComprar(product)">Comprar</button>
+        </mat-card-actions>
+      </mat-card>
+
+    </div>
+
+  </div>
+
+</mat-drawer-container>
+
+
+
+
+
