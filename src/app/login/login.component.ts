@@ -27,10 +27,7 @@ export class LoginComponent implements OnInit {
       email: form.value.email,
       password: form.value.password,
       returnSecureToken: true
-    }).subscribe(
-      res => this.router.navigate(['pages']),
-      err => err
-    );
+    }).subscribe(() => this.router.navigate(['pages']));
   }
 
 }

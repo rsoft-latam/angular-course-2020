@@ -20,16 +20,28 @@
     <form [formGroup]="productForm" autocomplete="off" style="display: flex; flex-direction: column; padding: 20px;">
 
       <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title" type="text" required>
+      </mat-form-field>
+
+      <div *ngIf="productForm.get('title').invalid &&
+              (productForm.get('title').touched ||
+              productForm.get('title').dirty)"
+           class="alert alert-danger">
+        <div *ngIf="productForm.get('title').errors.required">Name is required</div>
+      </div>
+
+      <mat-form-field>
         <mat-label>Description</mat-label>
-        <input matInput formControlName="description" type="text">
+        <input matInput formControlName="description" type="text" required>
       </mat-form-field>
 
       <div *ngIf="productForm.get('description').invalid &&
               (productForm.get('description').touched ||
               productForm.get('description').dirty)"
            class="alert alert-danger">
-        <div *ngIf="productForm.get('description').errors.required">Name is required</div>
-        <div *ngIf="productForm.get('description').errors.minlength">Name must have 3 characteres min</div>
+        <div *ngIf="productForm.get('description').errors.required">Description is required</div>
+        <div *ngIf="productForm.get('description').errors.minlength">Description must have 3 characteres min</div>
       </div>
 
       <mat-form-field>
@@ -37,12 +49,8 @@
         <input matInput formControlName="imageUrl" type="text">
       </mat-form-field>
       <mat-form-field>
-        <mat-label>Price</mat-label>
+        <mat-label>Price Bs.</mat-label>
         <input matInput formControlName="price" type="number">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Title</mat-label>
-        <input matInput formControlName="title" type="text">
       </mat-form-field>
 
     </form>

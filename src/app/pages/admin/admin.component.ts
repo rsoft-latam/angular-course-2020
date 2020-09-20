@@ -31,11 +31,11 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.loadProduct();
 
     this.productForm = this.formBuilder.group({
+      title: ['', [Validators.required]],
       description: ['', [Validators.required, Validators.minLength(3)]],
       imageUrl: '',
       ownerId: '',
-      price: '',
-      title: ''
+      price: ''
     });
 
   }

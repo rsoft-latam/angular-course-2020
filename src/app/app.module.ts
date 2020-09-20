@@ -31,13 +31,13 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     HttpClientModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(routes),
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
 
-    StoreModule.forRoot(reducers, {metaReducers}),
+    RouterModule.forRoot(routes),
     EffectsModule.forRoot([]),
+    StoreModule.forRoot(reducers, {metaReducers}),
     StoreDevtoolsModule.instrument({name: 'Angular Course', logOnly: environment.production})
   ],
   providers: [

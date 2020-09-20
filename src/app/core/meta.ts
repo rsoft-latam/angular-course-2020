@@ -11,6 +11,4 @@ export function logger(reducer: ActionReducer<any>): any {
   return storeLogger()(reducer);
 }
 
-export const metaReducers: MetaReducer<any>[] = !environment.production
-  ? [storeFreeze, logger]
-  : [];
+export const metaReducers: MetaReducer<any>[] = !environment.production ? [storeFreeze, logger] : [];
