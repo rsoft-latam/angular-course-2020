@@ -9,6 +9,9 @@ import {AuthService} from '../shared/services/auth.service';
 
 export class LoginComponent implements OnInit {
 
+  email = 'angular@angular.com';
+  password = '123456';
+
   constructor(private router: Router,
               private authService: AuthService) {
   }
@@ -20,20 +23,13 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(form: any): void {
-    console.log('FORM: ', form.value);
-
     this.authService.login({
       email: form.value.email,
       password: form.value.password,
       returnSecureToken: true
     }).subscribe(
-      res => {
-        console.log('LOGIN RESPONSE: ', res);
-        this.router.navigate(['pages']);
-      },
-      err => {
-        console.log('LOGIN ERROR: ');
-      }
+      res => this.router.navigate(['pages']),
+      err => err
     );
   }
 

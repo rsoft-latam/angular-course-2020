@@ -1,7 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+@import "./styles/login";
+@import "./styles/home";
+@import "./styles/admin";
+@import "./styles/scrollbar";
 
 html, body {
   width: 100%;
   height: 100%;
+}
+
+nav {
+  background-color: #ee4420;
+
+  mat-icon {
+    color: white;
+    cursor: pointer;
+  }
+
 }

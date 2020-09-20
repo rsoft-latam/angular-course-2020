@@ -1,9 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {ListComponent} from './list.component';
+import {RouterModule, Routes} from '@angular/router';
 
-import { ListRoutingModule } from './list-routing.module';
-import { ListComponent } from './list.component';
-
+const routes: Routes = [
+  {path: '', component: ListComponent}
+];
 
 @NgModule({
   declarations: [
@@ -11,7 +13,9 @@ import { ListComponent } from './list.component';
   ],
   imports: [
     CommonModule,
-    ListRoutingModule
+    RouterModule.forChild(routes)
   ]
 })
-export class ListModule { }
+
+export class ListModule {
+}

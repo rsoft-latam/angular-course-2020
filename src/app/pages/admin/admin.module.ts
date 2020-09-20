@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
-import {AdminRoutingModule} from './admin-routing.module';
 import {AdminComponent} from './admin.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ProductService} from '../../shared/services/product.service';
@@ -10,7 +9,12 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {RouterModule, Routes} from '@angular/router';
+import {MatIconModule} from '@angular/material/icon';
 
+const routes: Routes = [
+  {path: '', component: AdminComponent}
+];
 
 @NgModule({
   declarations: [
@@ -18,17 +22,19 @@ import {MatInputModule} from '@angular/material/input';
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule,
     ReactiveFormsModule,
     MatCardModule,
     MatSidenavModule,
     MatButtonModule,
+    MatIconModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    RouterModule.forChild(routes)
   ],
   providers: [
     ProductService
   ]
 })
+
 export class AdminModule {
 }

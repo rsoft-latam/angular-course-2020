@@ -1,26 +1,26 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ProductService} from '../../shared/services/product.service';
-import {Subscription} from 'rxjs';
+import {BehaviorSubject, Subscription} from 'rxjs';
 import {AuthService} from '../../shared/services/auth.service';
 
 @Component({
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss']
 })
+
 export class AdminComponent implements OnInit, OnDestroy {
 
+  createActive: boolean;
   products = [];
-
   productForm: FormGroup;
+  idEdit: any;
+  openSidenav$ = new BehaviorSubject<boolean>(false);
 
   productSubs: Subscription;
   productGetSubs: Subscription;
   productDeleteSubs: Subscription;
   productUpdateSubs: Subscription;
-  idEdit: any;
-
-  // nameControl = new FormControl();
 
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,
@@ -28,11 +28,10 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-
     this.loadProduct();
 
     this.productForm = this.formBuilder.group({
-      description: ['description', [Validators.required, Validators.minLength(3)]],
+      description: ['', [Validators.required, Validators.minLength(3)]],
       imageUrl: '',
       ownerId: '',
       price: '',
@@ -49,58 +48,46 @@ export class AdminComponent implements OnInit, OnDestroy {
     });
   }
 
-  onDelete(id: any): void {
-    this.productDeleteSubs = this.productService.deleteProduct(id).subscribe(
-      res => {
-        console.log('RESPONSE: ', res);
-        this.loadProduct();
-      },
-      err => {
-        console.log('ERROR: ');
-      }
-    );
+  onAdd(): void {
+    this.productForm.reset();
+    this.createActive = true;
+    this.openSidenav();
   }
 
   onEdit(product): void {
+    this.createActive = false;
+    this.openSidenav();
     this.idEdit = product.id;
     this.productForm.patchValue(product);
   }
 
-  onUpdateProduct(): void {
+  onDelete(id: any): void {
+    this.productDeleteSubs = this.productService.deleteProduct(id).subscribe(() => this.loadProduct());
+  }
+
+  onUpdate(): void {
     this.productUpdateSubs = this.productService.updateProduct(
       this.idEdit,
       {
         ...this.productForm.value,
         ownerId: this.authService.getUserId()
       }
-    ).subscribe(
-      res => {
-        console.log('RESP UPDATE: ', res);
-        this.loadProduct();
-      },
-      err => {
-        console.log('ERROR UPDATE DE SERVIDOR');
-      }
-    );
+    ).subscribe(() => this.loadProduct());
   }
 
-  /*onEnviar() {
-    console.log('VALOR: ', this.nameConatrol.value);
-  }*/
-
-  onEnviar2(): void {
+  onCreate(): void {
     this.productSubs = this.productService.addProduct({
       ...this.productForm.value,
       ownerId: this.authService.getUserId()
-    }).subscribe(
-      res => {
-        console.log('RESP: ', res);
-      },
-      err => {
-        console.log('ERROR DE SERVIDOR');
-      }
-    );
+    }).subscribe(() => this.loadProduct());
+  }
 
+  openSidenav(): void {
+    this.openSidenav$.next(true);
+  }
+
+  closeSidenav(): void {
+    this.openSidenav$.next(false);
   }
 
   ngOnDestroy(): void {
