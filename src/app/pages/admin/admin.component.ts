@@ -68,18 +68,21 @@ export class AdminComponent implements OnInit, OnDestroy {
   onUpdate(): void {
     this.productUpdateSubs = this.productService.updateProduct(
       this.idEdit,
-      {
-        ...this.productForm.value,
-        ownerId: this.authService.getUserId()
-      }
-    ).subscribe(() => this.loadProduct());
+      {...this.productForm.value, ownerId: this.authService.getUserId()}
+    ).subscribe(() => {
+      this.loadProduct();
+      this.closeSidenav();
+    });
   }
 
   onCreate(): void {
     this.productSubs = this.productService.addProduct({
       ...this.productForm.value,
       ownerId: this.authService.getUserId()
-    }).subscribe(() => this.loadProduct());
+    }).subscribe(() => {
+      this.loadProduct();
+      this.closeSidenav();
+    });
   }
 
   openSidenav(): void {

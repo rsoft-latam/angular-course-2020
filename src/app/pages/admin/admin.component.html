@@ -17,7 +17,7 @@
       </div>
     </div>
 
-    <form [formGroup]="productForm" style="display: flex; flex-direction: column; padding: 20px;">
+    <form [formGroup]="productForm" autocomplete="off" style="display: flex; flex-direction: column; padding: 20px;">
 
       <mat-form-field>
         <mat-label>Description</mat-label>
@@ -55,7 +55,7 @@
   </mat-drawer>
 
   <div style="margin: 20px;">
-    <button mat-fab color="primary" (click)="onAdd()">
+    <button mat-mini-fab color="primary" (click)="onAdd()">
       <mat-icon>add</mat-icon>
     </button>
   </div>

@@ -1,8 +1,9 @@
-<mat-card style="display: flex; flex-direction: column; width: 400px; height: 400px; background-color: #f39c12; padding: 50px;">
+<mat-card
+  style="display: flex; flex-direction: column; width: 400px; height: 400px; background-color: #f39c12; padding: 50px;">
   <mat-card-header style="display: flex; justify-content: center; height: 100px;">
     <div
       style="position: relative;top: -120px;border-radius: 50%;">
-      <img src="https://seeklogo.com/images/P/pedidosya-logo-A90F6F004F-seeklogo.com.png"
+      <img src="assets/images/logo.png"
            alt="Logo" style="height: 200px;
     width: 200px;
     border-radius: 50%;
@@ -42,8 +43,11 @@
   </mat-card-content>
 
   <mat-card-actions style="height: 200px;">
-    <button mat-button [disabled]="form.invalid" (click)="onLogin(form)" style="background-color: #c0392b; color: white; width: 100%;">
-      Login
+    <button mat-button
+            [disabled]="form.invalid"
+            (click)="onLogin(form)"
+            style="background-color: #ed2f42; color: white; width: 100%;">
+      LOGIN
     </button>
   </mat-card-actions>
 </mat-card>

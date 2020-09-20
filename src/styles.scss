@@ -11,8 +11,27 @@ html, body {
   height: 100%;
 }
 
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.btn:focus, .btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+button:focus, button:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+input:focus, input:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 nav {
-  background-color: #ee4420;
+  background-color: #ed2f42;
 
   mat-icon {
     color: white;
