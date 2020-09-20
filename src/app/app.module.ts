@@ -13,6 +13,7 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {environment} from '../environments/environment';
 import {metaReducers} from './core/meta';
 import {reducers} from './core';
+import {ServiceWorkerModule} from '@angular/service-worker';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
