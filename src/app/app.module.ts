@@ -30,6 +30,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     HttpClientModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
