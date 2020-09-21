@@ -35,7 +35,10 @@
     "@angular/cdk": "^10.0.0",
 
     "@ngrx/store": "^10.0.0",
-    "@ngrx/effects": "^10.0.0"
+    "@ngrx/effects": "^10.0.0",
+
+    "classlist.js": "^1.1.20150312",
+    "web-animations-js": "^2.3.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1001.0",

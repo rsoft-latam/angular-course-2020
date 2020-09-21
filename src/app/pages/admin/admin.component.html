@@ -55,8 +55,19 @@
     </form>
 
     <div style="display: flex; flex-direction: row; padding: 20px;">
-      <button *ngIf="createActive" mat-raised-button color="accent" (click)="onCreate()">Create</button>
-      <button *ngIf="!createActive" mat-raised-button color="accent" (click)="onUpdate()">Update</button>
+      <button *ngIf="createActive"
+              [disabled]="productForm.invalid"
+              mat-raised-button color="accent"
+              (click)="onCreate()">
+        Create
+      </button>
+      <button *ngIf="!createActive"
+              [disabled]="productForm.invalid"
+              mat-raised-button
+              color="accent"
+              (click)="onUpdate()">
+        Update
+      </button>
     </div>
 
   </mat-drawer>
