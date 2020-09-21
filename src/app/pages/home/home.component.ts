@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   homeSubs: Subscription;
   productSubs: Subscription;
   dataSource = new MatTableDataSource<any>([]);
-  displayedColumns: string[] = ['title', 'price', 'description', 'acciones'];
+  displayedColumns: string[] = ['title', 'price', 'acciones'];
   sidenavOpen$: Observable<boolean>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
