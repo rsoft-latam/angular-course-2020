@@ -49,16 +49,15 @@
          class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3"
          style="padding: 50px; display: flex; justify-content: center;">
 
-      <mat-card style="width: 300px; height: 400px; background-color: #bbd27d;">
+      <mat-card
+        style="display: flex; flex-direction: column; width: 300px; min-height: 400px; background-color: #bbd27d;">
         <mat-card-header>
           <mat-card-title>{{product.title}}</mat-card-title>
           <mat-card-subtitle>{{product.price}} Bs.</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image [src]="product.imageUrl" style="height: 180px;">
-        <mat-card-content>
-          <p>
-            {{product.description}}
-          </p>
+        <img mat-card-image [src]="product.imageUrl" style="height: 180px;"/>
+        <mat-card-content style="height: 100%;">
+          <p style="text-align: justify;">{{product.description}}</p>
         </mat-card-content>
         <mat-card-actions>
           <button mat-raised-button color="accent" (click)="onComprar(product)">Comprar</button>
